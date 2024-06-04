@@ -37,6 +37,12 @@ public class EmployeController {
 	        return service.saveEmployee(employee);
 	    }*/
 	    
+	    @PostMapping
+	    public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
+	        Employee newEmployee = service.saveEmployee(employee);
+	        return ResponseEntity.ok(newEmployee);
+	    }
+	    
 	    @PutMapping("/{id}")
 	    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
 	        Employee updatedEmployee = service.updateEmployee(id, employeeDetails);
@@ -54,5 +60,4 @@ public class EmployeController {
 	        service.deleteEmployee(id);
 	    }
 }
-
 

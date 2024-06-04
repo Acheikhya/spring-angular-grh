@@ -10,39 +10,38 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "employees")
 public class Employee {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long employeeId;
 
-	@Column(name="first_name")
+    @Column(name="first_name")
     private String firstName;
-	
-	@Column(name="last_name")
+    
+    @Column(name="last_name")
     private String lastName;
-	
-	@Column(name="email")
+    
+    @Column(name="email", unique = true)
     private String email;
-	
-	@Column(name="titre")
+
+    @Column(name="password")
+    private String password;
+    
+    @Column(name="titre")
     private String titre;
     
-	@Column(name="phone_number")
+    @Column(name="phone_number")
     private String phoneNumber;
     
-    public Employee() {
-		
-	}
-    
-    public Employee(String firstName, String lastName, String email,String titre, String phoneNumber) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.titre = titre;
-		this.phoneNumber = phoneNumber;
-	}
-    
+    public Employee() {}
 
+    public Employee(String firstName, String lastName, String email, String password, String titre, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.titre = titre;
+        this.phoneNumber = phoneNumber;
+    }
     // Getters et Setters
     public Long getEmployeeId() {
         return employeeId;
@@ -91,7 +90,13 @@ public class Employee {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
 
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
+	
+	public void setPassword(String password) {
+        this.password = password;
+    }
 }
-
